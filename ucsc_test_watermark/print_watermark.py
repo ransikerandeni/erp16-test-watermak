@@ -13,8 +13,8 @@ WATERMARK_TEXT = "ERP16-Test Server"
 
 WATERMARK_CSS = """
 /* UCSC test-server watermark */
-.print-format { position: relative; }
-.print-format::before {
+.print-format-gutter .print-format { position: relative; }
+.print-format-gutter .print-format::before {
 	content: "%s";
 	position: fixed;
 	top: 50%%;

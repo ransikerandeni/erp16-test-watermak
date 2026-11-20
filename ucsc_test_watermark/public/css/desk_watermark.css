@@ -1,0 +1,16 @@
+/* UCSC test-server watermark on every Desk page */
+body::after {
+	content: "ERP16-Test Server";
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-35deg);
+	font-size: clamp(40px, 8vw, 120px);
+	font-weight: 700;
+	letter-spacing: 6px;
+	white-space: nowrap;
+	color: rgba(200, 0, 0, 0.08);
+	z-index: 9999;
+	pointer-events: none;
+	user-select: none;
+}

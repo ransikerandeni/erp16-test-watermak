@@ -12,20 +12,27 @@ import frappe.www.printview as printview
 WATERMARK_TEXT = "ERP16-Test Server"
 
 WATERMARK_CSS = """
-/* UCSC test-server watermark */
-.print-format-gutter .print-format { position: relative; }
+/* UCSC test-server watermark.
+   Uses only px offsets + rotate so it renders in both Chrome PDF (print formats)
+   and wkhtmltopdf (report PDFs); position:fixed repeats it on every page.
+   Scoped to .print-format-gutter so Chrome PDF header/footer strips are skipped. */
 .print-format-gutter .print-format::before {
 	content: "%s";
+	display: block;
 	position: fixed;
-	top: 50%%;
-	left: 50%%;
-	-webkit-transform: translate(-50%%, -50%%) rotate(-35deg);
-	transform: translate(-50%%, -50%%) rotate(-35deg);
+	top: 420px;
+	left: 0;
+	right: 0;
+	width: 100%%;
+	text-align: center;
+	-webkit-transform: rotate(-35deg);
+	transform: rotate(-35deg);
 	font-size: 72px;
 	font-weight: 700;
 	letter-spacing: 4px;
 	white-space: nowrap;
-	color: rgba(200, 0, 0, 0.12);
+	color: #f5d0d0;
+	opacity: 0.9;
 	z-index: 1000;
 	pointer-events: none;
 	-webkit-print-color-adjust: exact;
